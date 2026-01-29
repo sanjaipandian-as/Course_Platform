@@ -1,0 +1,144 @@
+/* UI Overhaul - New Palette: #F5FBE6, #215E61, #233D4D */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@reference "tailwindcss";
+
+@theme {
+  /* Primary Colors - Deep Teal (#215E61) */
+  --color-primary-50: #eef7f7;
+  --color-primary-100: #d6ebec;
+  --color-primary-200: #aed6d8;
+  --color-primary-300: #77b8bb;
+  --color-primary-400: #469296;
+  --color-primary-500: #2c7679;
+  --color-primary-600: #215E61;
+  /* Base */
+  --color-primary-700: #1d4d50;
+  --color-primary-800: #1a4042;
+  --color-primary-900: #193638;
+  --color-primary-950: #0d1f21;
+
+  /* Secondary Colors - Dark Navy (#233D4D) */
+  --color-secondary-50: #f4f6f7;
+  --color-secondary-100: #e9edef;
+  --color-secondary-200: #c8d2d9;
+  --color-secondary-300: #a7b7c2;
+  --color-secondary-400: #668294;
+  --color-secondary-500: #254d66;
+  --color-secondary-600: #233D4D;
+  /* Base */
+  --color-secondary-700: #1d323f;
+  --color-secondary-800: #172731;
+  --color-secondary-900: #132028;
+  --color-secondary-950: #0a1116;
+
+  /* Site Background & Surface */
+  --color-site-bg: #F5FBE6;
+  --color-site-surface: #ECECEC;
+
+  /* Typography */
+  --font-sans: "Inter", "system-ui", "sans-serif";
+
+  /* Animations */
+  --animate-fade-in: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-bounce-slow: bounce 2s infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(2rem);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-secondary-900);
+    background-color: var(--color-site-bg);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
+  }
+
+  .glass-dark {
+    @apply bg-secondary-900/40 backdrop-blur-2xl border border-white/10 shadow-2xl;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply px-6 py-3 bg-primary-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-600/20 hover:bg-primary-700 hover:shadow-primary-700/30 transition-all duration-300 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-secondary-900 font-bold border border-secondary-200 rounded-2xl shadow-sm hover:bg-secondary-50 transition-all duration-300 active:scale-95;
+  }
+
+  /* Cards */
+  .card-glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl rounded-[2.5rem] p-8 transition-all duration-500 hover:shadow-2xl hover:translate-y-[-4px];
+  }
+
+  /* Form Inputs */
+  .input-field {
+    @apply w-full px-6 py-4 bg-white/50 border border-secondary-200 rounded-2xl focus:bg-white focus:ring-4 focus:ring-primary-500/10 focus:border-primary-500 outline-none transition-all duration-300 font-medium;
+  }
+
+  /* Typography */
+  .section-title {
+    @apply text-4xl md:text-5xl font-black text-secondary-900 tracking-tight leading-tight;
+  }
+}
+
+/* Custom Scrollbar - Themed */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--color-site-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--color-secondary-300);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--color-secondary-400);
+}
