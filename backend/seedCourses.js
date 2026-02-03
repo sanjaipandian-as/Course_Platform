@@ -1,266 +1,361 @@
-const mongoose = require('mongoose');
-const Course = require('./models/Course');
-require('dotenv').config();
+const mongoose = require("mongoose");
+const Course = require("./models/Course");
+require("dotenv").config();
 
 /**
- * Seed script to populate database with sample courses
+ * Seed script to populate database with provided courses
  * Run: node seedCourses.js
  */
 
 const sampleCourses = [
   {
-    courseName: 'SEO & AI for Beginners',
-    slug: 'seo-ai-beginners',
-    description: 'Master the art of search engine optimization combined with cutting-edge AI tools. Learn to automate content creation, perform deep keyword research, and drive organic growth using modern marketing automation techniques.',
-    shortDescription: 'Master SEO and AI Content Tools for modern digital marketing',
-    category: 'Marketing',
-    thumbnail: '/images/seo-ai.jpg',
-    demoVideoUrl: 'https://www.youtube.com/embed/demo-seo-ai',
-    brochureUrl: '/brochures/seo-ai-brochure.pdf',
+    courseName: "SEO & AI for Beginners",
+    slug: "seo-ai-beginners",
+    description:
+      "Master the art of search engine optimization combined with cutting-edge AI tools. Learn to automate content creation, perform deep keyword research, and drive organic growth using modern marketing automation techniques.",
+    shortDescription:
+      "Master SEO and AI Content Tools for modern digital marketing",
+    category: "Marketing",
+    thumbnail: "/images/seo-ai.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-seo-ai",
+    brochureUrl: "/brochures/seo-ai-brochure.pdf",
     syllabus: [
       {
-        module: 'SEO Fundamentals',
-        topics: ['Search Engine Basics', 'Keyword Research', 'On-Page SEO', 'Technical SEO'],
-        duration: '2 weeks'
+        module: "SEO Fundamentals",
+        topics: [
+          "Search Engine Basics",
+          "Keyword Research",
+          "On-Page SEO",
+          "Technical SEO",
+        ],
+        duration: "2 weeks",
       },
       {
-        module: 'AI Content Strategy',
-        topics: ['AI Writing Tools', 'Prompt Engineering', 'Content Automation', 'Visual AI Tools'],
-        duration: '2 weeks'
+        module: "AI Content Strategy",
+        topics: [
+          "AI Writing Tools",
+          "Prompt Engineering",
+          "Content Automation",
+          "Visual AI Tools",
+        ],
+        duration: "2 weeks",
       },
-      {
-        module: 'Marketing Automation',
-        topics: ['Email Marketing', 'Google Analytics 4', 'Campaign Reports', 'Growth Hacking'],
-        duration: '2 weeks'
-      },
-      {
-        module: 'Live Project & Portfolio',
-        topics: ['Real Website SEO Campaign', 'AI Content Generation', 'Portfolio Building'],
-        duration: '2 weeks'
-      }
     ],
     plans: {
       Basic: {
         price: 2999,
-        duration: '4 Weeks Training',
-        features: [
-          '4 Weeks Comprehensive Training',
-          'Search Engine Fundamentals',
-          'AI Content Basics',
-          'Certificate of Completion',
-          'Lifetime Access to Materials'
-        ],
+        duration: "4 Weeks Training",
+        features: ["Training", "Certificate of Completion"],
         internship: false,
-        certificate: true
+        certificate: true,
       },
       Pro: {
         price: 3999,
-        duration: '8 Weeks (Training + Internship)',
-        features: [
-          'Everything in Basic',
-          '4 Weeks Practical Internship',
-          'Industry Performance Report',
-          'Internship Completion Certificate',
-          'Direct Mentor Support'
-        ],
+        duration: "8 Weeks (Training + Internship)",
+        features: ["Training", "Internship", "Certificate of Completion"],
         internship: true,
-        certificate: true
+        certificate: true,
       },
       Elite: {
         price: 4999,
-        duration: '8 Weeks (Full Support)',
+        duration: "12 Weeks (Full Support)",
         features: [
-          'Everything in Pro',
-          'Live SEO Campaign Access',
-          'Experience Letter from Agency',
-          'Portfolio Support',
-          'AI Marketing Tool Stack Access',
-          '1-on-1 Career Guidance'
+          "Training",
+          "Internship",
+          "Live Project",
+          "Experience Letter",
+          "Portfolio Support",
         ],
         internship: true,
-        certificate: true
-      }
+        certificate: true,
+      },
     },
-    whatsappGroupLink: 'https://chat.whatsapp.com/seo-ai-group',
-    isActive: true
+    whatsappGroupLink: "https://chat.whatsapp.com/seo-ai-group",
+    isActive: true,
   },
   {
-    courseName: 'Full Stack Web Development',
-    slug: 'full-stack-web-development',
-    description: 'A comprehensive 24-week journey from zero to professional developer. Master the MERN stack, build scalable applications, and learn industry-standard deployment practices while working on real-world projects.',
-    shortDescription: 'Zero to Pro: Complete MERN stack development bootcamp',
-    category: 'Web Development',
-    thumbnail: '/images/fullstack.jpg',
-    demoVideoUrl: 'https://www.youtube.com/embed/demo-fullstack',
-    brochureUrl: '/brochures/fullstack-brochure.pdf',
+    courseName: "Full Stack Web Development",
+    slug: "full-stack-web-development",
+    description:
+      "A comprehensive journey from zero to professional developer. Master the MERN stack, build scalable applications, and learn industry-standard deployment practices while working on real-world projects.",
+    shortDescription: "Complete MERN stack development bootcamp",
+    category: "Web Development",
+    thumbnail: "/images/fullstack.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-fullstack",
+    brochureUrl: "/brochures/fullstack-brochure.pdf",
     syllabus: [
       {
-        module: 'Frontend Foundation',
-        topics: ['HTML5 & Modern CSS', 'JavaScript (ES6+)', 'Tailwind CSS', 'Responsive Layouts'],
-        duration: '4 weeks'
+        module: "Frontend Foundation",
+        topics: [
+          "HTML5 & Modern CSS",
+          "JavaScript (ES6+)",
+          "React Fundamentals",
+        ],
+        duration: "8 weeks",
       },
       {
-        module: 'React Ecosystem',
-        topics: ['React Hooks', 'Context API', 'React Router', 'State Management'],
-        duration: '4 weeks'
+        module: "Backend & Databases",
+        topics: ["Node.js", "Express.js", "MongoDB"],
+        duration: "8 weeks",
       },
-      {
-        module: 'Backend & Databases',
-        topics: ['Node.js', 'Express.js', 'MongoDB', 'JWT Authentication', 'REST APIs'],
-        duration: '4 weeks'
-      },
-      {
-        module: 'Advanced Full Stack',
-        topics: ['Deployment', 'Blogging System', 'E-commerce Logic', 'Security Best Practices'],
-        duration: '4 weeks'
-      }
     ],
     plans: {
       Basic: {
         price: 5999,
-        duration: '16 Weeks Training',
-        features: [
-          '16 Weeks Intensive Training',
-          'Full Frontend & Backend Curriculum',
-          'Blogging System Project',
-          'Certificate of Completion',
-          'Source Code Access'
-        ],
+        duration: "16 Weeks Training",
+        features: ["16 Weeks Training", "Certificate of Completion"],
         internship: false,
-        certificate: true
+        certificate: true,
       },
       Pro: {
         price: 7999,
-        duration: '24 Weeks (Training + Internship)',
-        features: [
-          'Everything in Basic',
-          '8 Weeks Industry Internship',
-          'Capstone Project Guidance',
-          'Internship Certificate',
-          'Code Review Sessions'
-        ],
+        duration: "24 Weeks (Training + Internship)",
+        features: ["Training", "Internship", "Certificate of Completion"],
         internship: true,
-        certificate: true
+        certificate: true,
       },
       Elite: {
         price: 9999,
-        duration: '24 Weeks (Career Support)',
+        duration: "24 Weeks (Career Support)",
         features: [
-          'Everything in Pro',
-          'Live Enterprise Level Projects',
-          'Experience Letter',
-          'GitHub Profile Building',
-          'Portfolio Development',
-          'Interview Coaching',
-          'Priority Job Support'
+          "Training",
+          "Internship",
+          "Live Projects",
+          "Experience Letter",
+          "GitHub Profile Building",
+          "Portfolio Development",
         ],
         internship: true,
-        certificate: true
-      }
+        certificate: true,
+      },
     },
-    whatsappGroupLink: 'https://chat.whatsapp.com/fullstack-group',
-    isActive: true
+    whatsappGroupLink: "https://chat.whatsapp.com/fullstack-group",
+    isActive: true,
   },
   {
-    courseName: 'Backend APIs with Python (FastAPI)',
-    slug: 'backend-apis-python-fastapi',
-    description: 'Learn to build ultra-fast, modern backend systems using Python and FastAPI. Focus on high-performance microservices, secure authentication, Docker containerization, and cloud deployment strategies.',
-    shortDescription: 'High-performance Python backends and microservices development',
-    category: 'Backend',
-    thumbnail: '/images/python-backend.jpg',
-    demoVideoUrl: 'https://www.youtube.com/embed/demo-python-backend',
-    brochureUrl: '/brochures/python-backend-brochure.pdf',
+    courseName: "Backend APIs with Python (FastAPI)",
+    slug: "backend-apis-python-fastapi",
+    description:
+      "Learn to build ultra-fast, modern backend systems using Python and FastAPI. Focus on high-performance microservices, secure authentication, and cloud deployment strategies.",
+    shortDescription:
+      "High-performance Python backends and microservices development",
+    category: "Backend",
+    thumbnail: "/images/python-backend.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-python-backend",
+    brochureUrl: "/brochures/python-backend-brochure.pdf",
     syllabus: [
       {
-        module: 'Python & FastAPI Core',
-        topics: ['Advanced Python', 'FastAPI Fundamentals', 'Pydantic Models', 'Type Hinting'],
-        duration: '3 weeks'
+        module: "FastAPI Core",
+        topics: ["Advanced Python", "FastAPI Fundamentals", "Pydantic Models"],
+        duration: "6 weeks",
       },
-      {
-        module: 'Databases & Security',
-        topics: ['PostgreSQL & SQLAlchemy', 'JWT Auth', 'OAuth2', 'API Security'],
-        duration: '3 weeks'
-      },
-      {
-        module: 'DevOps & Deployment',
-        topics: ['Docker Containerization', 'Unit Testing', 'GitHub Actions', 'Cloud Deployment'],
-        duration: '3 weeks'
-      },
-      {
-        module: 'Microservices Architecture',
-        topics: ['Service Communication', 'Redis Caching', 'API Gateway', 'Swagger Docs'],
-        duration: '3 weeks'
-      }
     ],
     plans: {
       Basic: {
         price: 4999,
-        duration: '6 Weeks Training',
-        features: [
-          '6 Weeks Core Backend Training',
-          'Python & FastAPI Deep Dive',
-          'Secure API Building',
-          'Certificate of Completion',
-          'Swagger Documentation Guide'
-        ],
+        duration: "6 Weeks Training",
+        features: ["Training", "Certificate of Completion"],
         internship: false,
-        certificate: true
+        certificate: true,
       },
       Pro: {
         price: 5999,
-        duration: '12 Weeks (Training + Internship)',
-        features: [
-          'Everything in Basic',
-          '6 Weeks Specialized Internship',
-          'API Performance Testing',
-          'Internship Certificate',
-          'Technical Assessment Prep'
-        ],
+        duration: "12 Weeks (Training + Internship)",
+        features: ["Training", "Internship", "Certificate of Completion"],
         internship: true,
-        certificate: true
+        certificate: true,
       },
       Elite: {
         price: 7499,
-        duration: '12 Weeks (Full Projects)',
+        duration: "12 Weeks (Full Projects)",
         features: [
-          'Everything in Pro',
-          'Live API Microservices Projects',
-          'Experience Letter',
-          'Portfolio of Secure APIs',
-          'Docker & Cloud Focus',
-          'Resume building for Backend Roles'
+          "Training",
+          "Internship",
+          "Live API Projects",
+          "Experience Letter",
         ],
         internship: true,
-        certificate: true
-      }
+        certificate: true,
+      },
     },
-    whatsappGroupLink: 'https://chat.whatsapp.com/python-backend-group',
-    isActive: true
-  }
+    whatsappGroupLink: "https://chat.whatsapp.com/python-backend-group",
+    isActive: true,
+  },
+  {
+    courseName: "Java Full Course",
+    slug: "java-full-course",
+    description:
+      "Master Java from basics to advanced enterprise-level development. Cover Core Java, Advanced Java features, and building full-stack applications with Spring Boot.",
+    shortDescription: "Master Java from Core to Advanced for Enterprise Apps",
+    category: "Programming",
+    thumbnail: "/images/java.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-java",
+    brochureUrl: "/brochures/java-brochure.pdf",
+    syllabus: [
+      {
+        module: "Core Java",
+        topics: ["Java Syntax", "OOPS Concepts", "Collections Framework"],
+        duration: "4 weeks",
+      },
+    ],
+    plans: {
+      Basic: {
+        price: 3999,
+        duration: "4 Weeks Training",
+        features: ["Core Java Training", "Certificate of Completion"],
+        internship: false,
+        certificate: true,
+      },
+      Pro: {
+        price: 5999,
+        duration: "8 Weeks (Training + Internship)",
+        features: [
+          "Core + Advanced Java Training",
+          "Internship",
+          "Certificate of Completion",
+        ],
+        internship: true,
+        certificate: true,
+      },
+      Elite: {
+        price: 7999,
+        duration: "12 Weeks (Full Projects)",
+        features: [
+          "Java Full Stack Basics",
+          "Live Projects",
+          "Experience Letter",
+          "Portfolio Support",
+        ],
+        internship: true,
+        certificate: true,
+      },
+    },
+    whatsappGroupLink: "https://chat.whatsapp.com/java-group",
+    isActive: true,
+  },
+  {
+    courseName: "Python Programming",
+    slug: "python-programming",
+    description:
+      "Comprehensive Python training covering everything from syntax to advanced automation and OOP. Perfect for beginners and aspiring data scientists or automation engineers.",
+    shortDescription: "Comprehensive Python from basics to advanced automation",
+    category: "Programming",
+    thumbnail: "/images/python.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-python",
+    brochureUrl: "/brochures/python-brochure.pdf",
+    syllabus: [
+      {
+        module: "Python Basics",
+        topics: ["Syntax", "Data Types", "Control Flow"],
+        duration: "4 weeks",
+      },
+    ],
+    plans: {
+      Basic: {
+        price: 3499,
+        duration: "4 Weeks Training",
+        features: ["Python Basics", "Certificate of Completion"],
+        internship: false,
+        certificate: true,
+      },
+      Pro: {
+        price: 5499,
+        duration: "8 Weeks (Training + Internship)",
+        features: [
+          "Python + OOP Training",
+          "Internship",
+          "Certificate of Completion",
+        ],
+        internship: true,
+        certificate: true,
+      },
+      Elite: {
+        price: 7499,
+        duration: "12 Weeks (Full Projects)",
+        features: [
+          "Advanced Python + Automation",
+          "Live Projects",
+          "Experience Letter",
+          "Portfolio Support",
+        ],
+        internship: true,
+        certificate: true,
+      },
+    },
+    whatsappGroupLink: "https://chat.whatsapp.com/python-group",
+    isActive: true,
+  },
+  {
+    courseName: "Game Development",
+    slug: "game-development",
+    description:
+      "Learn to build stunning 2D and 3D games using Unity and C#. From fundamentals to publishing your own game on industry-standard platforms.",
+    shortDescription: "Build stunning games with Unity and C#",
+    category: "Game Design",
+    thumbnail: "/images/gamedev.jpg",
+    demoVideoUrl: "https://www.youtube.com/embed/demo-gamedev",
+    brochureUrl: "/brochures/gamedev-brochure.pdf",
+    syllabus: [
+      {
+        module: "Unity Fundamentals",
+        topics: ["Editor Basics", "2D/3D Assets", "Physics"],
+        duration: "4 weeks",
+      },
+    ],
+    plans: {
+      Basic: {
+        price: 4999,
+        duration: "4 Weeks Training",
+        features: [
+          "Game Dev Fundamentals (Unity)",
+          "Certificate of Completion",
+        ],
+        internship: false,
+        certificate: true,
+      },
+      Pro: {
+        price: 6999,
+        duration: "8 Weeks (Training + Internship)",
+        features: [
+          "Unity + C# Training",
+          "Internship",
+          "Certificate of Completion",
+        ],
+        internship: true,
+        certificate: true,
+      },
+      Elite: {
+        price: 9499,
+        duration: "12 Weeks (Full Projects)",
+        features: [
+          "Complete Game Development",
+          "Live Games",
+          "Experience Letter",
+          "Portfolio Support",
+        ],
+        internship: true,
+        certificate: true,
+      },
+    },
+    whatsappGroupLink: "https://chat.whatsapp.com/gamedev-group",
+    isActive: true,
+  },
 ];
 
 const seedCourses = async () => {
   try {
-    // Connect to MongoDB
     await mongoose.connect(process.env.MONGODB_URI);
-    console.log('✅ Connected to MongoDB');
+    console.log("✅ Connected to MongoDB");
 
-    // Clear existing courses
     await Course.deleteMany({});
-    console.log('🗑️  Cleared existing courses');
+    console.log("🗑️  Cleared existing courses");
 
-    // Insert sample courses
     await Course.insertMany(sampleCourses);
-    console.log('✅ Sample courses inserted successfully');
-
-    console.log('\n📚 Courses added:');
-    sampleCourses.forEach((course, index) => {
-      console.log(`${index + 1}. ${course.courseName} (${course.slug})`);
-    });
+    console.log("✅ Sample courses inserted successfully");
 
     process.exit(0);
   } catch (error) {
-    console.error('❌ Error seeding courses:', error);
+    console.error("❌ Error seeding courses:", error);
     process.exit(1);
   }
 };

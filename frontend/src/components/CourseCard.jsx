@@ -8,7 +8,6 @@ const CourseCard = ({ course }) => {
     slug,
     shortDescription,
     category,
-    thumbnail,
     plans,
     whatsappGroupLink
   } = course;

@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -16,11 +16,16 @@ const Footer = () => {
               </span>
             </Link>
             <p className="text-secondary-500 text-sm leading-relaxed max-w-xs">
-              Empowering the next generation of tech leaders with industry-vetted curriculums and practical project-based learning.
+              Empowering the next generation of tech leaders with
+              industry-vetted curriculums and practical project-based learning.
             </p>
             <div className="flex space-x-5">
-              {['twitter', 'linkedin', 'instagram', 'github'].map((social) => (
-                <a key={social} href="#" className="text-secondary-400 hover:text-primary-600 transition-colors">
+              {["twitter", "linkedin", "instagram", "github"].map((social) => (
+                <a
+                  key={social}
+                  href="#"
+                  className="text-secondary-400 hover:text-primary-600 transition-colors"
+                >
                   <span className="sr-only">{social}</span>
                   <div className="w-5 h-5 bg-current rounded-full opacity-20 hover:opacity-100" />
                 </a>
@@ -30,21 +35,24 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">Platform</h3>
+            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">
+              Platform
+            </h3>
             <ul className="space-y-4">
               <li>
-                <Link to="/courses" className="text-sm text-secondary-600 hover:text-primary-600 transition-colors">
+                <Link
+                  to="/courses"
+                  className="text-sm text-secondary-600 hover:text-primary-600 transition-colors"
+                >
                   Browse Courses
                 </Link>
               </li>
               <li>
-                <Link to="/admin" className="text-sm text-secondary-600 hover:text-primary-600 transition-colors">
+                <Link
+                  to="/admin"
+                  className="text-sm text-secondary-600 hover:text-primary-600 transition-colors"
+                >
                   Admin Dashboard
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-sm text-secondary-600 hover:text-primary-600 transition-colors">
-                  Success Stories
                 </Link>
               </li>
             </ul>
@@ -52,12 +60,19 @@ const Footer = () => {
 
           {/* Policies */}
           <div>
-            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">Support</h3>
+            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">
+              Support
+            </h3>
             <ul className="space-y-4">
-              {['Privacy Policy', 'Terms & Conditions', 'Refund Policy', 'Internship Disclaimer'].map((item) => (
+              {[
+                "Privacy Policy",
+                "Terms & Conditions",
+                "Refund Policy",
+                "Internship Disclaimer",
+              ].map((item) => (
                 <li key={item}>
-                  <Link 
-                    to={`/${item.toLowerCase().replace(/ & /g, '-').replace(/ /g, '-')}`} 
+                  <Link
+                    to={`/${item.toLowerCase().replace(/ & /g, "-").replace(/ /g, "-")}`}
                     className="text-sm text-secondary-600 hover:text-primary-600 transition-colors"
                   >
                     {item}
@@ -69,30 +84,40 @@ const Footer = () => {
 
           {/* Contact Details */}
           <div>
-            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">Get in Touch</h3>
+            <h3 className="text-xs font-bold text-secondary-900 uppercase tracking-widest mb-6">
+              Get in Touch
+            </h3>
             <ul className="space-y-4 text-sm text-secondary-600">
               <li className="flex items-start space-x-3">
                 <span className="text-lg opacity-70">📧</span>
-                <a href="mailto:support@courseplatform.com" className="hover:text-primary-600 transition-colors">
-                  support@courseplatform.com
+                <a
+                  href="mailto:knock@zippydigitalsolutions.in"
+                  className="hover:text-primary-600 transition-colors"
+                >
+                  knock@zippydigitalsolutions.in
                 </a>
               </li>
               <li className="flex items-start space-x-3">
                 <span className="text-lg opacity-70">📞</span>
-                <span>+91 1234567890</span>
+                <span>+91 9943517648</span>
               </li>
               <li className="flex items-start space-x-3">
                 <span className="text-lg opacity-70">📍</span>
-                <span>Innovate Park, Phase 2, Bangalore, India</span>
+                <span>Madurai 625001, Tamil Nadu, India</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-secondary-200 flex flex-col md:flex-row justify-between items-center text-secondary-500 text-xs">
-          <p>© {new Date().getFullYear()} CoursePlatform. Built for creators by creators.</p>
+          <p>
+            © {new Date().getFullYear()} CoursePlatform. Built for creators by
+            creators.
+          </p>
           <div className="flex items-center space-x-4 mt-4 md:mt-0">
-            <span className="px-2 py-1 bg-secondary-50 rounded text-secondary-600">v1.2.0</span>
+            <span className="px-2 py-1 bg-secondary-50 rounded text-secondary-600">
+              v1.2.0
+            </span>
             <div className="flex items-center text-primary-600">
               <span className="w-2 h-2 bg-current rounded-full mr-2 animate-pulse" />
               Systems Operational
